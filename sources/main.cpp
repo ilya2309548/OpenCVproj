@@ -9,20 +9,20 @@ using namespace std;
 
 /////////////////  Images  //////////////////////
 
-// int main() {
+int main() {
 
-// 	string path = "../data/oboi.png";
-// 	Mat image = imread(path);
-// 	if (image.empty()) {
-//         std::cerr << "Failed to read image!" << std::endl;
-//         return 1;	
-//     }
-// 	else{	
-// 	imshow("Image", image);
-// 	waitKey(0);
-// 	return 0;}
-
-// }
+	string path = "../../data/oboi.png";
+	Mat image = imread(path);
+	if (image.empty()) {
+        std::cerr << "Failed to read image!" << std::endl;
+        return 1;	
+    }
+	else{	
+	imshow("Image", image);
+	waitKey(0);
+    }
+    return 0;
+}
 
 // int main() {
 //     // Создание матрицы размером 3x3 с элементами типа float
@@ -48,14 +48,14 @@ using namespace std;
 // }
 
 
-int main() {
-    // Создание однотонного изображения размером 300x200 с белым цветом (255)
-    cv::Mat image(200, 300, CV_8UC3, cv::Scalar(255, 255, 255));
+// int main() {
+//     // Создание однотонного изображения размером 300x200 с белым цветом (255)
+//     cv::Mat image(200, 300, CV_8UC3, cv::Scalar(255, 255, 255));
 
-    // Отображение изображения
-    cv::imshow("White Image", image);
-    cv::waitKey(0);
-    cv::destroyAllWindows();
+//     // Отображение изображения
+//     cv::imshow("White Image", image);
+//     cv::waitKey(0);
+//     cv::destroyAllWindows();
 
-    return 0;
-}
+//     return 0;
+// }

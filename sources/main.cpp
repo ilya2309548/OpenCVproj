@@ -24,6 +24,7 @@ int main() {
     return 0;
 }
 
+
 // int main() {
 //     // Создание матрицы размером 3x3 с элементами типа float
 //     cv::Mat matrix(3, 3, CV_32F);

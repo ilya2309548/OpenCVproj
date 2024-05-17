@@ -27,7 +27,6 @@ vector<vector<int>> ImgToBin(Mat& ImgMat) {
 
 /////////////////  Images  //////////////////////
 
-<<<<<<< HEAD
  int main() {
 
  	string path = "../../data/hare150.jpg";
@@ -48,26 +47,25 @@ vector<vector<int>> ImgToBin(Mat& ImgMat) {
         }
         cout << endl;
     }
-    return 0;s
+    return 0;
 
  }
-=======
-int main() {
 
-	string path = "../../data/oboi.png";
-	Mat image = imread(path);
-	if (image.empty()) {
-        std::cerr << "Failed to read image!" << std::endl;
-        return 1;	
-    }
-	else{	
-	imshow("Image", image);
-	waitKey(0);
-    }
-    return 0;
-}
+//int main() {
+//
+//	string path = "../../data/oboi.png";
+//	Mat image = imread(path);
+//	if (image.empty()) {
+//        std::cerr << "Failed to read image!" << std::endl;
+//        return 1;	
+//    }
+//	else{	
+//	imshow("Image", image);
+//	waitKey(0);
+//    }
+//    return 0;
+//}
 
->>>>>>> 716e39068b847bea684c75847f346ed7e1cbed4e
 
 // int main() {
 //     // Создание матрицы размером 3x3 с элементами типа float
@@ -93,7 +91,6 @@ int main() {
 // }
 
 
-<<<<<<< HEAD
 //int main() {
 //    // Создание однотонного изображения размером 300x200 с белым цветом (255)
 //    cv::Mat image(200, 300, CV_8UC3, cv::Scalar(255, 255, 255));
@@ -105,7 +102,7 @@ int main() {
 //
 //    return 0;
 //}
-=======
+
 // int main() {
 //     // Создание однотонного изображения размером 300x200 с белым цветом (255)
 //     cv::Mat image(200, 300, CV_8UC3, cv::Scalar(255, 255, 255));
@@ -117,4 +114,3 @@ int main() {
 
 //     return 0;
 // }
->>>>>>> 716e39068b847bea684c75847f346ed7e1cbed4e

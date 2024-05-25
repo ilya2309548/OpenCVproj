@@ -8,48 +8,57 @@ using namespace cv;
 using namespace std;
 
 
-vector<vector<int>> ImgToBin(Mat& ImgMat) {
-    vector<vector<int>> BinMat(ImgMat.rows, std::vector<int>(ImgMat.cols));
-    for (int i = 0; i < ImgMat.rows; ++i) {
-        for (int j = 0; j < ImgMat.cols; ++j) {
-            /*BinMat[i][j] = ImgMat.at<uchar>(i, j);*/
-            if (ImgMat.at<uchar>(i, j) < 128) {
-                BinMat[i][j] = 0;
-            }
-            else {
-                BinMat[i][j] = 1;
-            }
-        }
-    }
-    return BinMat;
-}
+//vector<vector<int>> ImgToBin(Mat& ImgMat) {
+//    vector<vector<int>> BinMat(ImgMat.rows, std::vector<int>(ImgMat.cols));
+//    for (int i = 0; i < ImgMat.rows; ++i) {
+//        for (int j = 0; j < ImgMat.cols; ++j) {
+//            /*BinMat[i][j] = ImgMat.at<uchar>(i, j);*/
+//            if (ImgMat.at<uchar>(i, j) < 128) {
+//                BinMat[i][j] = 0;
+//            }
+//            else {
+//                BinMat[i][j] = 1;
+//            }
+//        }
+//    }
+//    return BinMat;
+//}
+//
+//
+///////////////////  Images  //////////////////////
+//
+// int main() {
+//
+// 	string path = "../../data/finger1.png";
+// 	Mat image = imread(path);
+// 	if (image.empty()) {
+//         std::cerr << "Failed to read image!" << std::endl;
+//         return 1;	
+//    }
+// 	else{	
+// 	imshow("Image", image);
+// 	waitKey(0);
+//    }
+//
+//    vector<vector<int>> newbin(ImgToBin(image));
+//    for (int i = 0; i < image.rows; ++i) {
+//        for (int j = 0; j < image.cols; ++j) {
+//            cout << newbin[i][j];
+//        }
+//        cout << endl;
+//    }
+//    return 0;
+//
+// }
+ 
 
 
-/////////////////  Images  //////////////////////
 
- int main() {
 
- 	string path = "../../data/hare150.jpg";
- 	Mat image = imread(path);
- 	if (image.empty()) {
-         std::cerr << "Failed to read image!" << std::endl;
-         return 1;	
-    }
- 	else{	
- 	imshow("Image", image);
- 	waitKey(0);
-    }
 
-    vector<vector<int>> newbin(ImgToBin(image));
-    for (int i = 0; i < image.rows; ++i) {
-        for (int j = 0; j < image.cols; ++j) {
-            cout << newbin[i][j];
-        }
-        cout << endl;
-    }
-    return 0;
 
- }
+
+
 
 //int main() {
 //

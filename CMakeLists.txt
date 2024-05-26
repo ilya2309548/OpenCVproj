@@ -5,4 +5,16 @@ project(MyProject)
 find_package(OpenCV REQUIRED)
 
 # Добавление подпроектов
-add_subdirectory(sources)
+include_directories(include)
+
+# Добавление исполняемого файла
+add_executable(MyExecutable
+	sources/main.cpp 
+	sources/skelet.cpp 
+	sources/findconturs.cpp
+	sources/zhang_suen.cpp
+	sources/sum.cpp
+)
+
+# Подключение OpenCV
+target_link_libraries(MyExecutable ${OpenCV_LIBS})	

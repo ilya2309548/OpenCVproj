@@ -5,15 +5,16 @@ project(MyProject)
 find_package(OpenCV REQUIRED)
 
 # Добавление подпроектов
-include_directories(include)
+include_directories(${CMAKE_SOURCE_DIR}/include)
 
 # Добавление исполняемого файла
 add_executable(MyExecutable
-	sources/main.cpp 
-	sources/skelet.cpp 
-	sources/findconturs.cpp
+	sources/main.cpp  
 	sources/zhang_suen.cpp
-	sources/sum.cpp
+	sources/my_function.cpp
+	sources/skeletonization.cpp
+	sources/zhang_suen.cpp
+
 )
 
 # Подключение OpenCV

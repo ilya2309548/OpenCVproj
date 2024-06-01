@@ -3,12 +3,13 @@
 #include <opencv2/imgproc.hpp>
 #include <iostream>
 #include <vector>
+#include "zhang_suen.hpp"
 
 using namespace cv;
 using namespace std;
 
-// Функция для выполнения скелетизации по методу Zhang-Suen
-void thinningIteration(Mat& img, int iter) {
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ Zhang-Suen
+void zhang_suen(Mat& img, int iter) {
     Mat marker = Mat::zeros(img.size(), CV_8UC1);
 
     for (int i = 1; i < img.rows - 1; i++) {
@@ -38,54 +39,57 @@ void thinningIteration(Mat& img, int iter) {
     img &= ~marker;
 }
 
-// Функция для выполнения скелетизации всего изображения
-void thinning(Mat& img) {
-    img /= 255;
 
-    Mat prev = Mat::zeros(img.size(), CV_8UC1);
-    Mat diff;
-
-    do {
-        thinningIteration(img, 0);
-        thinningIteration(img, 1);
-        absdiff(img, prev, diff);
-        img.copyTo(prev);
-    } while (countNonZero(diff) > 0);
-
-
-
-    img *= 255;
-    imshow("img", img);
-}
-
-int main() {
-    // Загрузите ваше бинарное изображение отпечатка пальца
-    Mat img = imread("../../data/finger1.png", IMREAD_GRAYSCALE);
-   /* imshow("hare.png", img);*/
-
-    if (img.empty()) {
-        cout << "Ошибка загрузки изображения!" << endl;
-        return -1;
-    }
-
-    // Применяем пороговую обработку для бинаризации изображения
-    threshold(img, img, 127, 255, THRESH_BINARY);
-    //imshow("bin.png", img);
-    bitwise_not(img, img);
+//// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+//void skeletonization(Mat& img) {
+//    img /= 255;
+//
+//    Mat prev = Mat::zeros(img.size(), CV_8UC1);
+//    Mat diff;
+//
+//    do {
+//        zhang_suen(img, 0);
+//        zhang_suen(img, 1);
+//        absdiff(img, prev, diff);
+//        img.copyTo(prev);
+//    } while (countNonZero(diff) > 0);
+//
+//
+//
+//    img *= 255;
+//    imshow("img", img);
+//}
 
 
-    // Выполняем скелетизацию
-    thinning(img);
 
-    // Сохраняем результат
-    imwrite("skeletonized_fingerprint.png", img);
-
-    // Отображаем результат
-    imshow("Skeletonized Fingerprint", img);
-    waitKey(0);
-
-    return 0;
-}
+//int main() {
+//    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+//    Mat img = imread("../../data/finger1.png", IMREAD_GRAYSCALE);
+//   /* imshow("hare.png", img);*/
+//
+//    if (img.empty()) {
+//        cout << "пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ!" << endl;
+//        return -1;
+//    }
+//
+//    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+//    threshold(img, img, 127, 255, THRESH_BINARY);
+//    //imshow("bin.png", img);
+//    bitwise_not(img, img);
+//
+//
+//    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+//    thinning(img);
+//
+//    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+//    imwrite("skeletonized_fingerprint.png", img);
+//
+//    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+//    imshow("Skeletonized Fingerprint", img);
+//    waitKey(0);
+//
+//    return 0;
+//}
 
 
 

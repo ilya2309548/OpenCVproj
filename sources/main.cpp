@@ -3,6 +3,9 @@
 #include <opencv2/imgproc.hpp>
 #include <iostream>
 #include <vector>
+#include "my_function.hpp"
+#include "skeletonization.hpp"
+#include "zhang_suen.hpp"
 
 using namespace cv;
 using namespace std;
@@ -100,6 +103,8 @@ using namespace std;
 // }
 
 
+
+
 //int main() {
 //    // Создание однотонного изображения размером 300x200 с белым цветом (255)
 //    cv::Mat image(200, 300, CV_8UC3, cv::Scalar(255, 255, 255));
@@ -112,6 +117,9 @@ using namespace std;
 //    return 0;
 //}
 
+
+
+
 // int main() {
 //     // Создание однотонного изображения размером 300x200 с белым цветом (255)
 //     cv::Mat image(200, 300, CV_8UC3, cv::Scalar(255, 255, 255));
@@ -123,3 +131,45 @@ using namespace std;
 
 //     return 0;
 // }
+
+
+
+
+
+//int main() {
+//	my_function();
+//	return 0;
+//}
+
+
+
+
+
+int main() {
+    // ��������� ���� �������� ����������� ��������� ������
+    Mat img = imread("../data/finger1.png", IMREAD_GRAYSCALE);
+    //imshow("hare.png", img);
+
+    if (img.empty()) {
+        cout << "������ �������� �����������!" << endl;
+        return -1;
+    }
+
+    // ��������� ��������� ��������� ��� ����������� �����������
+    threshold(img, img, 127, 255, THRESH_BINARY);
+    //imshow("bin.png", img);
+    bitwise_not(img, img);
+
+
+    // ��������� ������������
+    skeletonization(img);
+
+    // ��������� ���������
+    imwrite("skeletonized_fingerprint.png", img);
+
+    // ���������� ���������
+    imshow("Skeletonized Fingerprint", img);
+    waitKey(0);
+
+    return 0;
+}

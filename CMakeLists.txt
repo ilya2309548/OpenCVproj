@@ -14,6 +14,8 @@ add_executable(MyExecutable
 	sources/my_function.cpp
 	sources/skeletonization.cpp
 	sources/zhang_suen.cpp
+	sources/remove_corner_pixels.cpp
+	sources/guo_hall.cpp
 
 )
 
